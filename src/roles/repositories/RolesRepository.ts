@@ -54,7 +54,6 @@ export class RolesRepository {
   }: PaginateParams): Promise<RolesPaginateProperties> {
     const [roles, count] = await this.repository
       .createQueryBuilder()
-      .createQueryBuilder()
       .skip(skip)
       .take(take)
       .getManyAndCount()
