@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { ShowRoleUseCase } from './ShowRoleUseCase'
+import { ShowRoleUseCase } from './DeleteRoleUseCase'
 
 export class ShowRoleController {
   constructor(private showRoleUseCase: ShowRoleUseCase) {}
