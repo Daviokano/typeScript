@@ -16,6 +16,7 @@
         "summary": "Create a role",
         "description": "Create a new role",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -24,6 +25,10 @@
                   "name": {
                     "type": "string"
                   }
+                },
+                "required": ["name"],
+                "example": {
+                  "name": "Administrator"
                 }
               }
             }
@@ -33,8 +38,8 @@
           "201": {
             "description": "Role created.",
             "content": {
-              "application/json":{
-                "schema":{
+              "application/json": {
+                "schema": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -65,24 +70,22 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Number of pages",
+            "description": "Page number",
             "required": false,
             "schema": {
-              "type": "number",
-              "default": "page=1"
-            },
-            "style": "label"
+              "type": "integer",
+              "default": 1
+            }
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "Number of registers",
+            "description": "Number of records per page",
             "required": false,
             "schema": {
               "type": "integer",
-              "default": "limit=15"
-            },
-            "style": "label"
+              "default": 15
+            }
           }
         ],
         "responses": {
@@ -95,83 +98,170 @@
                   "total": 2,
                   "current_page": 1,
                   "data": [
-                  {
-                    "id": "8fa2d110-95a1-4d79-9e69-a005d2dde226",
-                    "name": "Mariella amor da minha vida",
-                    "created_at": "2025-08-15T20:11:54.000Z"
-                  },
-                  {
-                    "id": "2b1f838b-a30c-41a3-8808-5b141a03a9e6",
-                    "name": 12,
-                    "created_at": "2025-08-15T21:27:24.000Z"
-                  }
+                    {
+                      "id": "8fa2d110-95a1-4d79-9e69-a005d2dde226",
+                      "name": "Mariella amor da minha vida",
+                      "createdAt": "2025-08-15T20:11:54.000Z"
+                    },
+                    {
+                      "id": "2b1f838b-a30c-41a3-8808-5b141a03a9e6",
+                      "name": "12",
+                      "createdAt": "2025-08-15T21:27:24.000Z"
+                    }
                   ]
                 }
               }
-            } 
+            }
           }
         }
-      },
-      "/roles/{id}": {
-        "put": {
-          "tags": ["Roles"],
-          "summary": "Update a role",
-          "description": "Update a role.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Identify of a role",
-              "required": true,
-              "schema":{
-                "type":"string"
-              },
-              "style": "label"
+      }
+    },
+    "/roles/{id}": {
+      "put": {
+        "tags": ["Roles"],
+        "summary": "Update a role",
+        "description": "Update a role.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of a role",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          ],
-          "requestBody":{
-            "content":{
-              "application/json":{
-                "schema":{
-                  "type":"object",
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name"],
+                "example": {
+                  "name": "Administrator"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
                   "properties": {
-                    "name":{
-                      "type":"string"
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
                     }
-                  },
-                  "example": "Administrator"
+                  }
+                },
+                "example": {
+                  "id": "74c8f2c7-5d9d-4c80-872c-c4f619fe6e78",
+                  "name": "Administrator",
+                  "createdAt": "2022-07-16T14:10:48.000Z"
                 }
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Success.",
-              "content":{
-                "application/json":{
-                  "schema":{
-                    "type":"object",
-                    "properties":{
-                      "id":{
-                        "type":"string"
-                      },
-                      "name":{
-                        "type":"string"
-                      },
-                      "created_at":{
-                        "type":"string"
-                      }
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "Role not found."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Roles"],
+        "summary": "Find role by ID",
+        "description": "Returns role based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of a role",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
                     }
                   }
+                },
+                "example": {
+                  "id": "74c8f2c7-5d9d-4c80-872c-c4f619fe6e78",
+                  "name": "Administrator",
+                  "createdAt": "2022-07-16T14:10:48.000Z"
                 }
               }
-            },
-            "400":{
-              "description": "Bad request."
-            },
-            "404": {
-              "description": "Role not found."
             }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "Role not found."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Roles"],
+        "summary": "Delete role by ID",
+        "description": "Delete role based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of a role",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content."
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "Role not found."
           }
         }
       }
