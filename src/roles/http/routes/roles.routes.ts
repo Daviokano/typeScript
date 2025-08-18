@@ -61,13 +61,16 @@ rolesRouter.put(
   },
 )
 
-rolesRouter.delete('/:id',celebrate({
+rolesRouter.delete(
+  '/:id',
+  celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().uuid().required(),
     }),
   }),
   (request, response) => {
     return deleteRolesController.handle(request, response)
-})
+  },
+)
 
 export { rolesRouter }
