@@ -61,9 +61,54 @@
         "tags": ["Role"],
         "summary": "List all roles",
         "description": "Returns all roles paginated.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of pages",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": "page=1"
+            },
+            "style": "label"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of registers",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": "limit=15"
+            },
+            "style": "label"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "per_page": 15,
+                  "total": 2,
+                  "current_page": 1,
+                  "data": [
+                  {
+                    "id": "8fa2d110-95a1-4d79-9e69-a005d2dde226",
+                    "name": "Mariella amor da minha vida",
+                    "created_at": "2025-08-15T20:11:54.000Z"
+                  },
+                  {
+                    "id": "2b1f838b-a30c-41a3-8808-5b141a03a9e6",
+                    "name": 12,
+                    "created_at": "2025-08-15T21:27:24.000Z"
+                  }
+                  ]
+                }
+              }
+            } 
           }
         }
       }
