@@ -1,5 +1,6 @@
 import { IUsersRepository } from '@users/repositories/IUsersRepository'
 import { UserRepository } from '@users/repositories/UsersRepository'
+import { CreateLoginController } from '@users/userCases/createLogin/CreateLoginControler'
 import { CreateUserController } from '@users/userCases/createUser/CreateUserController'
 import { ListUsersController } from '@users/userCases/listUsers/listUsersController'
 import { AlunoRepository } from 'src/alunos/repositories/AlunosRepository'
@@ -16,3 +17,5 @@ container.registerSingleton<IAlunosRepository>(
 container.registerSingleton('CreateUserController', CreateUserController)
 
 container.registerSingleton('ListUsersControllers', ListUsersController)
+
+container.registerSingleton('CreateLoginController', CreateLoginController)
