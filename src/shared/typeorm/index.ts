@@ -10,11 +10,14 @@ import { DropAlunosTable1712345678900 } from './migrations/1759521664640-ApagarA
 import { RecriarTabelaAluno1759521734352 } from './migrations/1759521734352-RecriarTabelaAluno'
 import { ApagarAlunos2Table1759522422202 } from './migrations/1759522422202-ApagarAlunos2'
 import { RecriandoTabelaAlunos21759522695534 } from './migrations/1759522695534-RecriandoTabelaAlunos2'
+import { Bimestre } from 'src/notas/entities/Bimestre'
+import { Nota } from 'src/notas/entities/Nota'
+import { CreateBimestresENotas1700000000000 } from './migrations/1760726475797-CriandoTabelaBimestreEnotas'
 
 export const dataSource = new DataSource({
   type: 'sqlite',
   database: './db.sqlite',
-  entities: [Role, User, Aluno],
+  entities: [Role, User, Aluno, Nota, Bimestre],
   migrations: [
     CreateRolesTable1657974893356,
     CreateUsersTable1757355218066,
@@ -24,5 +27,6 @@ export const dataSource = new DataSource({
     RecriarTabelaAluno1759521734352,
     ApagarAlunos2Table1759522422202,
     RecriandoTabelaAlunos21759522695534,
+    CreateBimestresENotas1700000000000,
   ],
 })

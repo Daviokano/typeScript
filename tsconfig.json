@@ -37,6 +37,8 @@
       "@alunos/*": ["src/alunos/*"],
       "@shared/*": ["src/shared/*"],
       "@users/*": ["src/users/*"],
+      "@notas/*": ["src/notas/*"],
+      "@bimestres/*": ["src/notas/*"],
       "@auth/*": ["src/auth/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

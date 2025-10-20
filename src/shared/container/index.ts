@@ -1,3 +1,5 @@
 import '@roles/container'
 import '@users/container'
 import '@alunos/container'
+import '@notas/container'
+import '@bimestres/container'

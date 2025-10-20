@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm'
+import { Nota } from 'src/notas/entities/Nota'
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
 @Entity('alunos')
@@ -17,6 +18,9 @@ export class Aluno {
 
   @Column()
   dataNascimento: Date
+
+  @OneToMany(() => Nota, nota => nota.aluno)
+  notas!: Nota[]
 
   constructor() {
     if (!this.rm) {
