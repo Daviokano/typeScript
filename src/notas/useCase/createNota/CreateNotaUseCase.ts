@@ -47,7 +47,11 @@ export class CreateNotaUseCase {
       })
       return nota
     } catch (error: any) {
-      if (error.code === '23505') {
+      if (
+        error.code === '23505' ||
+        error.code === 'SQLITE_CONSTRAINT' ||
+        error.message?.includes('UNIQUE constraint failed')
+      ) {
         throw new Error('Já existe uma nota para este aluno neste bimestre')
       }
       throw error

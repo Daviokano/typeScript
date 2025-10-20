@@ -13,14 +13,7 @@ export class ListNotasController {
       request.query.limit && Number(request.query.limit) > 0
         ? Number(request.query.limit)
         : 15
-    const { rm, year, term } = request.query
-    const notas = await listNotasUseCase.execute({
-      page,
-      limit,
-      rm,
-      year,
-      term,
-    })
+    const notas = await listNotasUseCase.execute({ page, limit })
     return response.json(notas)
   }
 }

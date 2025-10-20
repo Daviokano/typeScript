@@ -14,9 +14,6 @@ notasRouter.get(
     [Segments.QUERY]: {
       page: joi.number(),
       limit: joi.number(),
-      rm: joi.string().optional(),
-      year: joi.number().integer().min(2000).max(2100).optional(),
-      term: joi.number().integer().min(1).max(4).optional(),
     },
   }),
   (request, response) => {

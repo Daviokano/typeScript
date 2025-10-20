@@ -13,6 +13,7 @@ import { RecriandoTabelaAlunos21759522695534 } from './migrations/1759522695534-
 import { Bimestre } from 'src/notas/entities/Bimestre'
 import { Nota } from 'src/notas/entities/Nota'
 import { CreateBimestresENotas1700000000000 } from './migrations/1760726475797-CriandoTabelaBimestreEnotas'
+import { AddUniqueConstraintNotasSQLite1698200000001 } from './migrations/1760986996069-AddUniqueConstraintNotas'
 
 export const dataSource = new DataSource({
   type: 'sqlite',
@@ -28,5 +29,6 @@ export const dataSource = new DataSource({
     ApagarAlunos2Table1759522422202,
     RecriandoTabelaAlunos21759522695534,
     CreateBimestresENotas1700000000000,
+    AddUniqueConstraintNotasSQLite1698200000001,
   ],
 })
